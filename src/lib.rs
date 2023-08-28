@@ -120,7 +120,17 @@ pub fn load_native_certs() -> CertificateResult {
     let paths = CertPaths::from_env();
     match (&paths.dir, &paths.file) {
         (Some(_), _) | (_, Some(_)) => paths.load(),
-        (None, None) => platform::load_native_certs(),
+        (None, None) => {
+            #[cfg(target_os = "wasi")]
+            {
+                panic!("wasi does not support SSL_CERT_FILE");
+            }
+
+            #[cfg(not(target_os = "wasi"))]
+            {
+                platform::load_native_certs()
+            }
+        }
     }
 }
 
