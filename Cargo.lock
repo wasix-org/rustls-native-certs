@@ -55,9 +55,9 @@ checksum = "b048fb63fd8b5923fc5aa7b340d8e156aec7ec02f0c78fa8a6ddc2613f6f71de"
 
 [[package]]
 name = "cc"
-version = "1.2.1"
+version = "1.2.31"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fd9de9f2205d5ef3fd67e685b0df337994ddd4495e2a28d185500d0e1edfea47"
+checksum = "c3a42d84bb6b69d3a8b3eaacf0d88f179e1929695e1ad012b6cf64d9caaa5fd2"
 dependencies = [
  "shlex",
 ]
@@ -75,7 +75,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b55271e5c8c478ad3f38ad24ef34923091e0548492a266d19b3c0b4d82574c63"
 dependencies = [
  "core-foundation-sys",
- "libc 0.2.164",
+ "libc",
 ]
 
 [[package]]
@@ -130,7 +130,7 @@ version = "0.3.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "534c5cf6194dfab3db3242765c03bbe257cf92f22b38f6bc0c58d59108a820ba"
 dependencies = [
- "libc 0.2.164",
+ "libc",
  "windows-sys 0.52.0",
 ]
 
@@ -224,7 +224,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c4567c8db10ae91089c99af84c68c38da3ec2f087c3f82960bcdbf3656b6f4d7"
 dependencies = [
  "cfg-if",
- "libc 0.2.164",
+ "libc",
  "wasi",
 ]
 
@@ -242,14 +242,8 @@ checksum = "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
 
 [[package]]
 name = "libc"
-version = "0.2.151"
-source = "git+https://github.com/wasix-org/libc.git#2c0250f5adab47f99d94ef80e82a87f7dfe5e8f5"
-
-[[package]]
-name = "libc"
-version = "0.2.164"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "433bfe06b8c75da9b2e3fbea6e5329ff87748f0b144ef75306e674c3f6f7c13f"
+version = "0.2.169"
+source = "git+https://github.com/wasix-org/libc.git?branch=wasix-0.2.169#4792da5a5c9ecf0d2f9fa61a6d4735e849df7a12"
 
 [[package]]
 name = "linux-raw-sys"
@@ -367,7 +361,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1e401f977ab385c9e4e3ab30627d6f26d00e2c73eef317493c4ec6d468726cf8"
 dependencies = [
  "cfg-if",
- "libc 0.2.164",
+ "libc",
  "redox_syscall",
  "smallvec",
  "windows-targets 0.52.6",
@@ -420,32 +414,31 @@ dependencies = [
 
 [[package]]
 name = "ring"
-version = "0.16.20"
-source = "git+https://github.com/wasix-org/ring.git?branch=wasix#ae8229623bd623370e0dea68b046e62c228b47bd"
-dependencies = [
- "cc",
- "getrandom",
- "libc 0.2.164",
- "once_cell",
- "spin",
- "untrusted 0.7.1",
- "wasi",
- "winapi",
-]
-
-[[package]]
-name = "ring"
 version = "0.17.7"
 source = "git+https://github.com/wasix-org/ring.git?branch=0.17.7#be27e9a6daa1bdae897fb9cd3c82d0fc6b86e4c9"
 dependencies = [
  "cc",
  "cfg-if",
  "getrandom",
- "libc 0.2.164",
+ "libc",
  "spin",
- "untrusted 0.9.0",
+ "untrusted",
  "wasi",
  "windows-sys 0.48.0",
+]
+
+[[package]]
+name = "ring"
+version = "0.17.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a4689e6c2294d81e88dc6261c768b63bc4fcdb852be6d1352498b114f61383b7"
+dependencies = [
+ "cc",
+ "cfg-if",
+ "getrandom",
+ "libc",
+ "untrusted",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -465,7 +458,7 @@ checksum = "99e4ea3e1cdc4b559b8e5650f9c8e5998e3e5c1343b4eaf034565f32318d63c0"
 dependencies = [
  "bitflags",
  "errno",
- "libc 0.2.164",
+ "libc",
  "linux-raw-sys",
  "windows-sys 0.52.0",
 ]
@@ -488,17 +481,17 @@ dependencies = [
 name = "rustls-native-certs"
 version = "0.8.1"
 dependencies = [
- "libc 0.2.151",
+ "libc",
  "openssl-probe",
- "ring 0.16.20",
+ "ring 0.17.14",
  "rustls",
  "rustls-pki-types",
- "rustls-webpki 0.100.1",
+ "rustls-webpki 0.101.7",
  "schannel",
  "security-framework",
  "serial_test",
  "tempfile",
- "untrusted 0.9.0",
+ "untrusted",
  "webpki-roots",
  "x509-parser",
 ]
@@ -511,20 +504,12 @@ checksum = "16f1201b3c9a7ee8039bcadc17b7e605e2945b27eee7631788c1bd2b0643674b"
 
 [[package]]
 name = "rustls-webpki"
-version = "0.100.1"
-source = "git+https://github.com/wasix-org/webpki.git?branch=v0.100.1#3e5b3331a0fc8194ba78c76275ae5be0ad27e5c7"
+version = "0.101.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8b6275d1ee7a1cd780b64aca7726599a1dbc893b1e64144529e55c3c2f745765"
 dependencies = [
- "ring 0.16.20",
- "untrusted 0.7.1",
-]
-
-[[package]]
-name = "rustls-webpki"
-version = "0.101.1"
-source = "git+https://github.com/wasix-org/webpki.git?branch=v0.101.0#b647431385890a1d648bbccb44340b0384fc7c8c"
-dependencies = [
- "ring 0.16.20",
- "untrusted 0.7.1",
+ "ring 0.17.14",
+ "untrusted",
 ]
 
 [[package]]
@@ -534,7 +519,7 @@ source = "git+https://github.com/wasix-org/webpki.git?branch=v0.102.1#b40fed8978
 dependencies = [
  "ring 0.17.7",
  "rustls-pki-types",
- "untrusted 0.9.0",
+ "untrusted",
 ]
 
 [[package]]
@@ -567,7 +552,7 @@ version = "0.7.1"
 source = "git+https://github.com/wasix-org/sct.git?branch=v0.7.1#ceb4eb04711cb84870a3909e2263dc95b780b626"
 dependencies = [
  "ring 0.17.7",
- "untrusted 0.9.0",
+ "untrusted",
 ]
 
 [[package]]
@@ -585,7 +570,7 @@ dependencies = [
  "bitflags",
  "core-foundation",
  "core-foundation-sys",
- "libc 0.2.164",
+ "libc",
  "security-framework-sys",
 ]
 
@@ -596,7 +581,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fa39c7303dc58b5543c94d22c1766b0d31f2ee58306363ea622b10bbc075eaa2"
 dependencies = [
  "core-foundation-sys",
- "libc 0.2.164",
+ "libc",
 ]
 
 [[package]]
@@ -771,12 +756,6 @@ checksum = "e91b56cd4cadaeb79bbf1a5645f6b4f8dc5bde8834ad5894a8db35fda9efa1fe"
 
 [[package]]
 name = "untrusted"
-version = "0.7.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a156c684c91ea7d62626509bce3cb4e1d9ed5c4d978f7b4352658f96a4c26b4a"
-
-[[package]]
-name = "untrusted"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8ecb6da28b8a351d773b68d5825ac39017e680750f980f3a1a85cd8dd28a47c1"
@@ -789,33 +768,8 @@ checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
 
 [[package]]
 name = "webpki-roots"
-version = "0.24.0"
-source = "git+https://github.com/wasix-org/webpki-roots.git?branch=v0.24.0#a9ef804104f0ce70b80a04052940a6fa3fdae740"
-dependencies = [
- "rustls-webpki 0.101.1",
-]
-
-[[package]]
-name = "winapi"
-version = "0.3.9"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5c839a674fcd7a98952e593242ea400abe93992746761e38641405d28b00f419"
-dependencies = [
- "winapi-i686-pc-windows-gnu",
- "winapi-x86_64-pc-windows-gnu",
-]
-
-[[package]]
-name = "winapi-i686-pc-windows-gnu"
-version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ac3b87c63620426dd9b991e5ce0329eff545bccbbb34f3be09ff6fb6ab51b7b6"
-
-[[package]]
-name = "winapi-x86_64-pc-windows-gnu"
-version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
+version = "0.25.2"
+source = "git+https://github.com/wasix-org/webpki-roots.git?branch=v0.25.2#915906d596f9ac0332121a4c4147cb152e45ebe2"
 
 [[package]]
 name = "windows-sys"
